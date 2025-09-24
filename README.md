@@ -1,6 +1,6 @@
 # Queueing-theory-model-M-M-S-K
 M/M/s/k Queue Simulation
-Overview
+#Overview
 This C program simulates an M/M/s/k queueing system, where:
 
 M: Poisson arrival process (exponential inter-arrival times)
@@ -9,7 +9,7 @@ s: Number of servers (defined as S)
 k: Maximum system capacity, including those in service and in queue (defined as K)
 
 The program generates random inter-arrival and service times, simulates packet arrivals and departures, and computes performance metrics such as average system time (W), average queue time (Wq), average number of customers in the system (L), and average number in queue (Lq). Both simulation-based and analytical results are calculated and output to the console and a file named mmsk.csv.
-Features
+#Features
 
 Random Number Generation: Uses a linear congruential generator (lcgrand) to produce pseudo-random numbers for generating exponential inter-arrival and service times.
 Queueing Model: Simulates a multi-server queue with limited capacity (k), where packets are dropped if the system is full.
@@ -23,7 +23,7 @@ Wq: Average time a packet spends in the queue.
 Analytical Calculations: Computes theoretical values for L, Lq, W, and Wq using M/M/s/k queueing formulas.
 Output: Results are printed to the console and saved to mmsk.csv for further analysis.
 
-Constants and Parameters
+#Constants and Parameters
 
 MODLUS, MULT1, MULT2: Parameters for the random number generator.
 S: Number of servers (default: 2).
@@ -32,7 +32,7 @@ lambda: Arrival rate (default: 25.0 packets per minute).
 mu: Service rate (default: 40.0 packets per minute).
 n: Number of packets to simulate (default: 1,000,000).
 
-Program Structure
+#Program Structure
 
 Random Number Generator:
 lcgrand(int stream): Generates a random number for a given stream.
@@ -65,7 +65,7 @@ Computes and outputs simulation-based and analytical metrics.
 
 
 
-Compilation and Execution
+#Compilation and Execution
 
 Requirements: A C compiler (e.g., gcc).
 Compile:gcc -o mmsk mmsk.c -lm
@@ -82,14 +82,14 @@ File: Appends results to mmsk.csv in the format:L_sim,Lq_sim,W_sim,Wq_sim,L_math
 
 
 
-Usage Notes
+#Usage Notes
 
 The program uses a fixed seed array (zrng) for reproducibility. Modify zrng or the random number generator functions for different random sequences.
 The simulation assumes a stable system (i.e., lambda / (s * mu) < 1).
 The output file mmsk.csv is opened in append mode (a+), so running the program multiple times will append new rows to the file.
 To change the simulation parameters, modify the constants S, K, lambda, mu, or n in the code.
 
-Example Output
+#Example Output
 For the default parameters (lambda = 25.0, mu = 40.0, S = 2, K = 8, n = 1,000,000):
 0.73512456, 0.11023456, 0.02940578, 0.00440988
 0.73123456, 0.10876543, 0.02924938, 0.00435062
@@ -99,7 +99,7 @@ The first line shows simulation results (L, Lq, W, Wq).
 The second line shows analytical results.
 The same values are appended to mmsk.csv.
 
-Limitations
+#Limitations
 
 The random number generator is deterministic and uses a predefined seed array, which may limit randomness for large simulations.
 The program assumes packets are dropped when the system is full (queue length + servers = K).
